@@ -45,7 +45,7 @@ namespace BillingPbi
             try
             {
                 dataGridView1.Columns.Clear();
-                dataGridView1.DataSource = clsConsql.getDatasetsql("SELECT  [id],[VmNo],[VmDate],[VmType],[VmAmtRO],[VmMonthYr] FROM [VuMst] WHERE [VmNo]>0");
+                dataGridView1.DataSource = clsConsql.getDatasetsql("SELECT  [id],[VmNo],[VmDate],[VmType],[VmAmtRO],[VmMonthYr] FROM [VuMst] WHERE [VmNo]>0 and [VmDate] between '" + From.Value.ToString("yyyy-MM-dd") + "' and '" + To.Value.ToString("yyyy-MM-dd") + "'");
                 dataGridView1.DataMember = clsConsql.getDatasql().Tables[0].TableName;
                 //this.dataGridView1.DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
                 //this.dataGridView1.Columns[5].DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
@@ -326,6 +326,19 @@ namespace BillingPbi
         private void advancedDataGridViewSearchToolBar1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void From_ValueChanged(object sender, EventArgs e)
+        {
+            To.Focus();
+            fncLoadGridData();
+        }
+
+        private void To_ValueChanged(object sender, EventArgs e)
+        {
+           
+            fncLoadGridData();
+            dataGridView1.Focus();
         }
     }
 }

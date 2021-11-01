@@ -32,6 +32,8 @@
             this.txtCustName = new System.Windows.Forms.TextBox();
             this.lblCustName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.advancedDataGridView1 = new Zuby.ADGV.AdvancedDataGridView();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtActType = new System.Windows.Forms.TextBox();
@@ -56,18 +58,19 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.actMstTableAdapter = new BillingPbi.WtrBillingDataSetTableAdapters.ActMstTableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.To = new System.Windows.Forms.DateTimePicker();
+            this.From = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSelectAll = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.advancedDataGridView1 = new Zuby.ADGV.AdvancedDataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).BeginInit();
             this.grpDataGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actMstBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wtrBillingDataSet)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCustName
@@ -112,11 +115,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "VoucherDetail";
             // 
+            // advancedDataGridView1
+            // 
+            this.advancedDataGridView1.AllowUserToAddRows = false;
+            this.advancedDataGridView1.AllowUserToDeleteRows = false;
+            this.advancedDataGridView1.AllowUserToResizeColumns = false;
+            this.advancedDataGridView1.AllowUserToResizeRows = false;
+            this.advancedDataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.advancedDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advancedDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.advancedDataGridView1.FilterAndSortEnabled = true;
+            this.advancedDataGridView1.Location = new System.Drawing.Point(6, 184);
+            this.advancedDataGridView1.Name = "advancedDataGridView1";
+            this.advancedDataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advancedDataGridView1.Size = new System.Drawing.Size(764, 171);
+            this.advancedDataGridView1.TabIndex = 27;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(373, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Dr/Cr";
+            // 
             // txtId
             // 
             this.txtId.Enabled = false;
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(695, 15);
+            this.txtId.Location = new System.Drawing.Point(442, 19);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(75, 20);
@@ -216,7 +245,7 @@
             // 
             // btnClearFilters
             // 
-            this.btnClearFilters.Location = new System.Drawing.Point(380, 115);
+            this.btnClearFilters.Location = new System.Drawing.Point(369, 287);
             this.btnClearFilters.Name = "btnClearFilters";
             this.btnClearFilters.Size = new System.Drawing.Size(75, 23);
             this.btnClearFilters.TabIndex = 25;
@@ -332,58 +361,68 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.monthCalendar1);
+            this.groupBox2.Controls.Add(this.To);
+            this.groupBox2.Controls.Add(this.From);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.btnSelectAll);
             this.groupBox2.Controls.Add(this.btnClearFilters);
             this.groupBox2.Location = new System.Drawing.Point(794, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(461, 185);
+            this.groupBox2.Size = new System.Drawing.Size(461, 68);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "GridControls";
-            this.groupBox2.Visible = false;
             // 
-            // monthCalendar1
+            // To
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(12, 17);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 27;
+            this.To.CustomFormat = "yyyy-MM-dd";
+            this.To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.To.Location = new System.Drawing.Point(199, 22);
+            this.To.Name = "To";
+            this.To.Size = new System.Drawing.Size(104, 20);
+            this.To.TabIndex = 33;
+            this.To.Value = new System.DateTime(2021, 11, 1, 15, 43, 38, 0);
+            this.To.ValueChanged += new System.EventHandler(this.To_ValueChanged);
+            // 
+            // From
+            // 
+            this.From.CustomFormat = "yyyy-MM-dd";
+            this.From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.From.Location = new System.Drawing.Point(55, 22);
+            this.From.Name = "From";
+            this.From.Size = new System.Drawing.Size(104, 20);
+            this.From.TabIndex = 32;
+            this.From.Value = new System.DateTime(2021, 11, 1, 15, 53, 10, 0);
+            this.From.ValueChanged += new System.EventHandler(this.From_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(173, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 13);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "To";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "From";
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(380, 144);
+            this.btnSelectAll.Location = new System.Drawing.Point(369, 316);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
             this.btnSelectAll.TabIndex = 26;
             this.btnSelectAll.Text = "ProcessBill";
             this.btnSelectAll.UseVisualStyleBackColor = true;
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(373, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Dr/Cr";
-            // 
-            // advancedDataGridView1
-            // 
-            this.advancedDataGridView1.AllowUserToAddRows = false;
-            this.advancedDataGridView1.AllowUserToDeleteRows = false;
-            this.advancedDataGridView1.AllowUserToResizeColumns = false;
-            this.advancedDataGridView1.AllowUserToResizeRows = false;
-            this.advancedDataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.advancedDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.advancedDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.advancedDataGridView1.FilterAndSortEnabled = true;
-            this.advancedDataGridView1.Location = new System.Drawing.Point(6, 184);
-            this.advancedDataGridView1.Name = "advancedDataGridView1";
-            this.advancedDataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.advancedDataGridView1.Size = new System.Drawing.Size(764, 171);
-            this.advancedDataGridView1.TabIndex = 27;
             // 
             // VoucherMst
             // 
@@ -401,6 +440,7 @@
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).EndInit();
             this.grpDataGrid.ResumeLayout(false);
             this.grpDataGrid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -409,7 +449,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).EndInit();
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,10 +484,13 @@
         private Zuby.ADGV.AdvancedDataGridViewSearchToolBar advancedDataGridViewSearchToolBar1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSelectAll;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label4;
         private Zuby.ADGV.AdvancedDataGridView advancedDataGridView1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker From;
+        private System.Windows.Forms.DateTimePicker To;
     }
 }
 
