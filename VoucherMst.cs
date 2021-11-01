@@ -64,6 +64,31 @@ namespace BillingPbi
                 toolStripErrors.Text = errGrid.Message;
             }
         }
+        private void fncLoadVoucherGridData()
+        {
+            try
+            {
+                advancedDataGridView1.Columns.Clear();
+                advancedDataGridView1.DataSource = clsConsql.getDatasetsql("SELECT  [id], [VuNo], [VuDate], [VuType], [VuACode], [VuAmt], [VuNart], [VuCRDR] FROM [VuData] WHERE [VuNo]= '" + dataGridView1.CurrentRow.Cells[1].Value.ToString() + "' and [VuDate] = '" + Convert.ToDateTime(dataGridView1.CurrentRow.Cells[2].Value).ToString("yyyy-MM-dd") + "'");
+                advancedDataGridView1.DataMember = clsConsql.getDatasql().Tables[0].TableName;
+                //this.advancedDataGridView1.DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
+                //this.advancedDataGridView1.Columns[5].DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
+                //this.advancedDataGridView1.Columns[6].DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
+                //this.advancedDataGridView1.Columns[7].DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
+                advancedDataGridView1.Refresh();
+                advancedDataGridView1.Columns[0].Visible = false;
+                advancedDataGridView1.RowHeadersVisible = false;
+                lblTotal.Text = advancedDataGridView1.Rows.Count.ToString();
+
+                //advancedDataGridViewSearchToolBar1.SetColumns(advancedDataGridView1.Columns);
+                //fncUpdateDisplay(clsConsql.getDatasql().Tables[0].Rows[0][0].ToString(), clsCon.getData().Tables[0].Rows[0][1].ToString(), clsCon.getData().Tables[0].Rows[0][2].ToString(), clsCon.getData().Tables[0].Rows[0][3].ToString());
+            }
+            catch (Exception errGrid)
+            {
+                toolStripErrors.Text = errGrid.Message;
+            }
+        }
+
         private void fncUpdateDisplay(String mp1, String mp2, String mp3, String mp4)
         {
             txtCustCode.Text = mp1;
@@ -184,14 +209,16 @@ namespace BillingPbi
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count > 1)
+            if (dataGridView1.Rows.Count > 0)
             {
-                txtId.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                txtCustCode.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                txtCustName.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                txtCustFName.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                txtCustCast.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                txtActType.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
+                //txtId.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                //txtCustCode.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                //txtCustName.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                //txtCustFName.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                //txtCustCast.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                //txtActType.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
+
+                fncLoadVoucherGridData();
             }
 
         }
