@@ -339,6 +339,7 @@ namespace BillingPbi
            
             fncLoadGridData();
             dataGridView1.Focus();
+
         }
     }
 }
