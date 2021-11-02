@@ -16,7 +16,7 @@ using System.Reflection;
 
 namespace BillingPbi
 {
-    public partial class VoucherMst : Form
+    public partial class ZoomPartyAc : Form
     {
 
         //Device communication declarations
@@ -28,7 +28,7 @@ namespace BillingPbi
         //Data Declarations
         SQLConnection clsConsql = new SQLConnection();
 
-        public VoucherMst()
+        public ZoomPartyAc()
         {
             InitializeComponent();
         }
@@ -91,29 +91,29 @@ namespace BillingPbi
 
         private void fncUpdateDisplay(String mp1, String mp2, String mp3, String mp4)
         {
-            txtVuNo.Text = mp1;
-            txtVuDate.Text = mp2;
-            txtVuAcode.Text = mp3;
-            txtVuAmt.Text = mp4;
+            txtCustCode.Text = mp1;
+            txtCustName.Text = mp2;
+            txtCustFName.Text = mp3;
+            txtCustCast.Text = mp4;
 
         }
         private void fncAddnew()
         {
             txtId.Text = "";
-            txtVuNo.Text = fncGenerateNewCode();
-            txtVuDate.Text = "";
-            txtVuAcode.Text = "";
-            txtVuAmt.Text = "";
-            txtVuDate.Focus();
+            txtCustCode.Text = fncGenerateNewCode();
+            txtCustName.Text = "";
+            txtCustFName.Text = "";
+            txtCustCast.Text = "";
+            txtCustName.Focus();
 
         }
         private void fncEmptyFields()
         {
             txtId.Text = "";
-            txtVuNo.Text = "";
-            txtVuDate.Text = "";
-            txtVuAcode.Text = "";
-            txtVuAmt.Text = "";
+            txtCustCode.Text = "";
+            txtCustName.Text = "";
+            txtCustFName.Text = "";
+            txtCustCast.Text = "";
             //txtCustName.Focus();
 
         }
@@ -134,15 +134,15 @@ namespace BillingPbi
                     strSqlCr = " insert into [ActMst] ";
                     //strSqlCr = strSqlCr + " ([ActCode],[ActNAME],[Act_F_NAME],[Act_CAST],[Act_NAMEPbi],[Act_F_NAMEPbi],[Act_CASTPbi],[ActType],[ActAddress],[ActCity]) ";
                     strSqlCr = strSqlCr + " ([ActCode],[ActNAME],[Act_F_NAME],[Act_CAST],[Act_NAMEPbi],[Act_F_NAMEPbi],[Act_CASTPbi],[ActType],[ActAddress],[ActBill]) ";
-                    strSqlCr = strSqlCr + " values('" + (txtVuNo.Text) + "','" + (txtVuDate.Text) + "','" + (txtVuAcode.Text) + "','" + (txtVuAmt.Text) + "','" + (txtVuType.Text) + "')";
+                    strSqlCr = strSqlCr + " values('" + (txtCustCode.Text) + "','" + (txtCustName.Text) + "','" + (txtCustFName.Text) + "','" + (txtCustCast.Text) + "','" + (txtActType.Text) + "')";
                 }
                 else
                 {
                     strSqlCr = " UPDATE [ActMst] ";
-                    strSqlCr = strSqlCr + "  SET [ActCode]='" + (txtVuNo.Text.Trim()) + "'";
-                    strSqlCr = strSqlCr + "  , [ActNAME]='" + (txtVuDate.Text.Trim()) + "'";
-                    strSqlCr = strSqlCr + "  , [Act_F_NAME]='" + (txtVuAcode.Text.Trim()) + "'";
-                    strSqlCr = strSqlCr + "  , [Act_CAST]='" + (txtVuAmt.Text.Trim()) + "'";
+                    strSqlCr = strSqlCr + "  SET [ActCode]='" + (txtCustCode.Text.Trim()) + "'";
+                    strSqlCr = strSqlCr + "  , [ActNAME]='" + (txtCustName.Text.Trim()) + "'";
+                    strSqlCr = strSqlCr + "  , [Act_F_NAME]='" + (txtCustFName.Text.Trim()) + "'";
+                    strSqlCr = strSqlCr + "  , [Act_CAST]='" + (txtCustCast.Text.Trim()) + "'";
                     strSqlCr = strSqlCr + " WHERE [ID]=" + (txtId.Text.Trim()) + "";
                 }
                 try
@@ -367,30 +367,6 @@ namespace BillingPbi
             fncLoadGridData();
             dataGridView1.Focus();
 
-        }
-
-        private void VuType_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                if(VuType.Text=="BR" || VuType.Text == "BP")
-                {
-                    grpBank.Visible = true;
-                    txtBankCode.Focus();
-                }
-            }
-        }
-
-        private void txtBankCode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                if (txtBankCode.Text == "" || txtBankCode.Text == "")
-                {
-                    listBankName.Visible = true;
-                    listBankName.Focus();
-                }
-            }
         }
     }
 }

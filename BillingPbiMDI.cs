@@ -147,5 +147,18 @@ namespace BillingPbi
             VoucherMst.WindowState = FormWindowState.Maximized;
 
         }
+
+        private void toolBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            ZoomPartyAc ZoomPartyAc = new ZoomPartyAc();
+            ZoomPartyAc.MdiParent = this;
+            ZoomPartyAc.Text = "ZoomPartyAc ";
+            ZoomPartyAc.WindowState = FormWindowState.Minimized;
+            ZoomPartyAc.Dock = DockStyle.Fill;
+            ZoomPartyAc.Show();
+            ZoomPartyAc.WindowState = FormWindowState.Maximized;
+
+        }
     }
 }
