@@ -69,7 +69,7 @@ namespace BillingPbi
             try
             {
                 advancedDataGridView1.Columns.Clear();
-                advancedDataGridView1.DataSource = clsConsql.getDatasetsql("SELECT  [id], [VuNo], [VuDate], [VuType], [VuACode], [VuAmt], [VuNart], [VuCRDR] FROM [VuData] WHERE [VuNo]= '" + dataGridView1.CurrentRow.Cells[1].Value.ToString() + "' and [VuDate] = '" + Convert.ToDateTime(dataGridView1.CurrentRow.Cells[2].Value).ToString("yyyy-MM-dd") + "'");
+                advancedDataGridView1.DataSource = clsConsql.getDatasetsql("SELECT  [id], [VuNo], [VuDate], [VuType], [VuACode], case when [VuAmt]>=0 then [VuAmt] else 0 end as Debit, case when [VuAmt]<0 then [VuAmt] else 0 end as Credit , [VuNart], [VuCRDR] FROM [VuData] WHERE [VuNo]= '" + dataGridView1.CurrentRow.Cells[1].Value.ToString() + "' and [VuDate] = '" + Convert.ToDateTime(dataGridView1.CurrentRow.Cells[2].Value).ToString("yyyy-MM-dd") + "'");
                 advancedDataGridView1.DataMember = clsConsql.getDatasql().Tables[0].TableName;
                 //this.advancedDataGridView1.DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
                 //this.advancedDataGridView1.Columns[5].DefaultCellStyle.Font = new Font("AnmolKalmi", 8);
