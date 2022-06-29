@@ -32,17 +32,17 @@
             this.txtVuDate = new System.Windows.Forms.TextBox();
             this.lblCustName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listActName = new Zuby.ADGV.AdvancedDataGridView();
             this.VuType = new System.Windows.Forms.ListBox();
             this.grpBank = new System.Windows.Forms.GroupBox();
-            this.listBankName = new System.Windows.Forms.ListBox();
-            this.actMstBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wtrBillingDataSet = new BillingPbi.WtrBillingDataSet();
+            this.listBankName = new Zuby.ADGV.AdvancedDataGridView();
+            this.listBankName1 = new System.Windows.Forms.ListBox();
             this.txtBankName = new System.Windows.Forms.TextBox();
             this.txtBankCode = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textNart = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textVuName = new System.Windows.Forms.TextBox();
+            this.txtVuName = new System.Windows.Forms.TextBox();
             this.advancedDataGridView1 = new Zuby.ADGV.AdvancedDataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -56,6 +56,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtVuAcode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.actMstBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wtrBillingDataSet = new BillingPbi.WtrBillingDataSet();
             this.btnClearFilters = new System.Windows.Forms.Button();
             this.grpDataGrid = new System.Windows.Forms.GroupBox();
             this.advancedDataGridViewSearchToolBar1 = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
@@ -73,10 +75,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listActName)).BeginInit();
             this.grpBank.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBankName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actMstBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wtrBillingDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).BeginInit();
             this.grpDataGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -103,11 +107,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.listActName);
             this.groupBox1.Controls.Add(this.VuType);
             this.groupBox1.Controls.Add(this.grpBank);
             this.groupBox1.Controls.Add(this.textNart);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textVuName);
+            this.groupBox1.Controls.Add(this.txtVuName);
             this.groupBox1.Controls.Add(this.advancedDataGridView1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtId);
@@ -130,6 +135,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "VoucherDetail";
             // 
+            // listActName
+            // 
+            this.listActName.AllowUserToAddRows = false;
+            this.listActName.AllowUserToDeleteRows = false;
+            this.listActName.AllowUserToResizeColumns = false;
+            this.listActName.AllowUserToResizeRows = false;
+            this.listActName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listActName.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listActName.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.listActName.FilterAndSortEnabled = true;
+            this.listActName.Location = new System.Drawing.Point(183, 48);
+            this.listActName.Name = "listActName";
+            this.listActName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.listActName.Size = new System.Drawing.Size(153, 95);
+            this.listActName.TabIndex = 39;
+            this.listActName.Visible = false;
+            this.listActName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listActName_KeyPress);
+            // 
             // VuType
             // 
             this.VuType.FormattingEnabled = true;
@@ -150,6 +174,7 @@
             // grpBank
             // 
             this.grpBank.Controls.Add(this.listBankName);
+            this.grpBank.Controls.Add(this.listBankName1);
             this.grpBank.Controls.Add(this.txtBankName);
             this.grpBank.Controls.Add(this.txtBankCode);
             this.grpBank.Controls.Add(this.label9);
@@ -163,25 +188,32 @@
             // 
             // listBankName
             // 
-            this.listBankName.DataSource = this.actMstBindingSource;
-            this.listBankName.DisplayMember = "ActNAME";
-            this.listBankName.FormattingEnabled = true;
-            this.listBankName.Location = new System.Drawing.Point(107, 24);
+            this.listBankName.AllowUserToAddRows = false;
+            this.listBankName.AllowUserToDeleteRows = false;
+            this.listBankName.AllowUserToResizeColumns = false;
+            this.listBankName.AllowUserToResizeRows = false;
+            this.listBankName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBankName.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listBankName.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.listBankName.FilterAndSortEnabled = true;
+            this.listBankName.Location = new System.Drawing.Point(74, 19);
             this.listBankName.Name = "listBankName";
-            this.listBankName.Size = new System.Drawing.Size(120, 95);
-            this.listBankName.TabIndex = 37;
-            this.listBankName.ValueMember = "ActNAME";
+            this.listBankName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.listBankName.Size = new System.Drawing.Size(153, 95);
+            this.listBankName.TabIndex = 38;
             this.listBankName.Visible = false;
+            this.listBankName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBankName_KeyPress_1);
             // 
-            // actMstBindingSource
+            // listBankName1
             // 
-            this.actMstBindingSource.DataMember = "ActMst";
-            this.actMstBindingSource.DataSource = this.wtrBillingDataSet;
-            // 
-            // wtrBillingDataSet
-            // 
-            this.wtrBillingDataSet.DataSetName = "WtrBillingDataSet";
-            this.wtrBillingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.listBankName1.FormattingEnabled = true;
+            this.listBankName1.Location = new System.Drawing.Point(107, 24);
+            this.listBankName1.Name = "listBankName1";
+            this.listBankName1.Size = new System.Drawing.Size(120, 95);
+            this.listBankName1.TabIndex = 37;
+            this.listBankName1.Visible = false;
+            this.listBankName1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBankName_KeyPress);
             // 
             // txtBankName
             // 
@@ -228,13 +260,13 @@
             this.label8.TabIndex = 30;
             this.label8.Text = "Narration";
             // 
-            // textVuName
+            // txtVuName
             // 
-            this.textVuName.Location = new System.Drawing.Point(199, 48);
-            this.textVuName.Name = "textVuName";
-            this.textVuName.ReadOnly = true;
-            this.textVuName.Size = new System.Drawing.Size(229, 20);
-            this.textVuName.TabIndex = 28;
+            this.txtVuName.Location = new System.Drawing.Point(199, 48);
+            this.txtVuName.Name = "txtVuName";
+            this.txtVuName.ReadOnly = true;
+            this.txtVuName.Size = new System.Drawing.Size(229, 20);
+            this.txtVuName.TabIndex = 28;
             // 
             // advancedDataGridView1
             // 
@@ -284,13 +316,13 @@
             // 
             // txtVuType
             // 
-            this.txtVuType.Enabled = false;
             this.txtVuType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVuType.Location = new System.Drawing.Point(392, 19);
             this.txtVuType.Name = "txtVuType";
             this.txtVuType.Size = new System.Drawing.Size(35, 20);
             this.txtVuType.TabIndex = 18;
             this.txtVuType.Text = "JL";
+            this.txtVuType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVuType_KeyPress);
             // 
             // label7
             // 
@@ -354,6 +386,7 @@
             this.txtVuAcode.Name = "txtVuAcode";
             this.txtVuAcode.Size = new System.Drawing.Size(100, 20);
             this.txtVuAcode.TabIndex = 2;
+            this.txtVuAcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVuAcode_KeyPress);
             // 
             // label2
             // 
@@ -363,6 +396,17 @@
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "VuAcode";
+            // 
+            // actMstBindingSource
+            // 
+            this.actMstBindingSource.DataMember = "ActMst";
+            this.actMstBindingSource.DataSource = this.wtrBillingDataSet;
+            this.actMstBindingSource.CurrentChanged += new System.EventHandler(this.actMstBindingSource_CurrentChanged);
+            // 
+            // wtrBillingDataSet
+            // 
+            this.wtrBillingDataSet.DataSetName = "WtrBillingDataSet";
+            this.wtrBillingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnClearFilters
             // 
@@ -551,11 +595,13 @@
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listActName)).EndInit();
             this.grpBank.ResumeLayout(false);
             this.grpBank.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBankName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actMstBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wtrBillingDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).EndInit();
             this.grpDataGrid.ResumeLayout(false);
             this.grpDataGrid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -606,13 +652,15 @@
         private System.Windows.Forms.DateTimePicker To;
         private System.Windows.Forms.TextBox textNart;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textVuName;
+        private System.Windows.Forms.TextBox txtVuName;
         private System.Windows.Forms.GroupBox grpBank;
         private System.Windows.Forms.TextBox txtBankName;
         private System.Windows.Forms.TextBox txtBankCode;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ListBox VuType;
-        private System.Windows.Forms.ListBox listBankName;
+        private System.Windows.Forms.ListBox listBankName1;
+        private Zuby.ADGV.AdvancedDataGridView listBankName;
+        private Zuby.ADGV.AdvancedDataGridView listActName;
     }
 }
 

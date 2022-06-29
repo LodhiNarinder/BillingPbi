@@ -37,7 +37,10 @@ namespace BillingPbi
         {
             // TODO: This line of code loads data into the 'wtrBillingDataSet.ActMst' table. You can move, or remove it, as needed.
             //this.actMstTableAdapter.Fill(this.wtrBillingDataSet.ActMst);
+            txtVuDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
             fncLoadGridData();
+            fncLoadBankGridData();
+            fncLoadActGridData();
 
         }
         private void fncLoadGridData()
@@ -58,6 +61,38 @@ namespace BillingPbi
 
                 advancedDataGridViewSearchToolBar1.SetColumns(dataGridView1.Columns);
                 //fncUpdateDisplay(clsConsql.getDatasql().Tables[0].Rows[0][0].ToString(), clsCon.getData().Tables[0].Rows[0][1].ToString(), clsCon.getData().Tables[0].Rows[0][2].ToString(), clsCon.getData().Tables[0].Rows[0][3].ToString());
+            }
+            catch (Exception errGrid)
+            {
+                toolStripErrors.Text = errGrid.Message;
+            }
+        }
+        private void fncLoadBankGridData()
+        {
+            try
+            {
+                listBankName.Columns.Clear();
+                listBankName.DataSource = clsConsql.getDatasetsql("SELECT  [ActNAME],[ActCode] FROM [ActMst] WHERE [ActType]='B'");
+                listBankName.DataMember = clsConsql.getDatasql().Tables[0].TableName;
+                listBankName.Refresh();
+                listBankName.RowHeadersVisible = false;
+
+            }
+            catch (Exception errGrid)
+            {
+                toolStripErrors.Text = errGrid.Message;
+            }
+        }
+        private void fncLoadActGridData()
+        {
+            try
+            {
+                listActName.Columns.Clear();
+                listActName.DataSource = clsConsql.getDatasetsql("SELECT  [ActNAME],[ActCode] FROM [ActMst] ");
+                listActName.DataMember = clsConsql.getDatasql().Tables[0].TableName;
+                listActName.Refresh();
+                listActName.RowHeadersVisible = false;
+
             }
             catch (Exception errGrid)
             {
@@ -373,10 +408,18 @@ namespace BillingPbi
         {
             if (e.KeyChar == 13)
             {
-                if(VuType.Text=="BR" || VuType.Text == "BP")
+                txtVuType.Text = VuType.Text;
+                if (VuType.Text=="BR" || VuType.Text == "BP")
                 {
                     grpBank.Visible = true;
                     txtBankCode.Focus();
+                    VuType.Visible = false;
+
+                }
+                else
+                {
+                    VuType.Visible = false;
+                    txtVuAcode.Focus();
                 }
             }
         }
@@ -385,12 +428,84 @@ namespace BillingPbi
         {
             if (e.KeyChar == 13)
             {
-                if (txtBankCode.Text == "" || txtBankCode.Text == "")
-                {
                     listBankName.Visible = true;
                     listBankName.Focus();
-                }
+
             }
+        }
+
+        private void txtVuType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (!(txtVuType.Text == "JL" || txtVuType.Text == "CR" || txtVuType.Text == "CP" || txtVuType.Text == "BR" || txtVuType.Text == "BP" || txtVuType.Text == "SL"))
+                {
+                    VuType.Visible = true;
+                    VuType.Focus();
+
+                }
+                else if (txtVuType.Text == "BR" || txtVuType.Text == "BP")
+                {
+                    grpBank.Visible = true;
+                    txtBankCode.Focus();
+                    VuType.Visible = false;
+                }
+                else
+                {
+                    VuType.Visible = false;
+                    txtVuAcode.Focus();
+                }
+
+            }
+        }
+
+        private void listBankName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                    txtBankCode.Text = listBankName1.Text;
+                    listBankName1.Visible = false;
+                    txtVuAcode.Focus();
+            }
+        }
+
+        private void actMstBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBankName_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtBankCode.Text = listBankName.CurrentRow.Cells[1].Value.ToString();
+                listBankName.Visible = false;
+                txtVuAcode.Focus();
+            }
+
+        }
+
+        private void txtVuAcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                listActName.Visible = true;
+                listActName.Focus();
+
+            }
+
+        }
+
+        private void listActName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtVuAcode.Text = listActName.CurrentRow.Cells[1].Value.ToString();
+                txtVuName.Text = listActName.CurrentRow.Cells[0].Value.ToString();
+                listActName.Visible = false;
+                txtVuAmt.Focus();
+            }
+
         }
     }
 }
